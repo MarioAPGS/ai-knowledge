@@ -55,3 +55,8 @@ Cuando crees un componente nuevo, sigue el patrón de `Weather.jsx`:
 
 - Todo el contenido visible al usuario va en **español**
 - Código (variables, funciones, comentarios técnicos) en **inglés**
+
+<!-- SPECKIT START -->
+For additional context about technologies to be used, project structure,
+shell commands, and other important information, read the current plan
+<!-- SPECKIT END -->
