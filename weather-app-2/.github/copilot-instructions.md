@@ -9,8 +9,14 @@ Base URL de la API: `https://api.open-meteo.com/v1/forecast`
 ## Estructura
 
 - `src/pages/` — Cada página tiene su `.jsx` y `.css`
+- `src/components/` — Componentes compartidos (`Layout.jsx`, etc.)
 - `src/main.jsx` — Punto de entrada y definición de rutas
 - `src/index.css` — Estilos globales
+- `.github/instructions/` — Instrucciones de estilo visual y layout
+
+## Estilo visual
+
+Antes de escribir CSS, revisa `CONTRIBUTING.md` para ver el valor de `ESTILO_ACTIVO` y aplica la instrucción correspondiente de `.github/instructions/`. El layout fullscreen (`.github/instructions/fullscreen-layout.instructions.md`) se aplica SIEMPRE.
 
 ## Convenciones obligatorias
 

@@ -35,6 +35,8 @@ Sin agents, la IA hace todo en una sola conversación: analiza, decide, escribe 
 
 ## Skills (OpenCode)
 
+https://agentskills.so/skills/categories
+
 Una skill es un **bloque de conocimiento reutilizable** que la IA carga bajo demanda. Vive en `.opencode/skills/<nombre>/SKILL.md` con frontmatter YAML.
 
 ```yaml
