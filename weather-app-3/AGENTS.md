@@ -77,5 +77,5 @@ Cuando crees algo nuevo, usa `Weather.jsx` como referencia para la estructura de
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan
-at specs/001-weather-history/plan.md
+at specs/001-dark-mode-toggle/plan.md
 <!-- SPECKIT END -->

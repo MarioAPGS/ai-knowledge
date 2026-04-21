@@ -32,6 +32,21 @@
   --md-corner-full: 9999px;
 }
 
+[data-theme="dark"] {
+  --md-bg: #1c1b1f;
+  --md-surface: #2b2930;
+  --md-surface-dim: #141218;
+  --md-primary: #d0bcff;
+  --md-on-primary: #381e72;
+  --md-secondary: #ccc2dc;
+  --md-tertiary: #efb8c8;
+  --md-error: #f2b8b5;
+  --md-text: #e6e1e5;
+  --md-text-muted: #cac4d0;
+  --md-outline: #938f99;
+  --md-outline-var: #49454f;
+}
+
 body {
   font-family: 'Roboto', system-ui, -apple-system, sans-serif;
   background: var(--md-bg);
