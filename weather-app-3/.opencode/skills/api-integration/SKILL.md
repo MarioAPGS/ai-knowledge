@@ -1,31 +1,21 @@
 ---
 name: api-integration
-description: Cómo integrar y usar la API de Open-Meteo en la Weather App
+description: Endpoints, parámetros y patrones de uso de la API de Open-Meteo
 ---
 
 ## API de Open-Meteo
 
-La app usa la API gratuita de Open-Meteo. No requiere API key.
+API gratuita de datos meteorológicos. No requiere API key.
 
 **Base URL:** `https://api.open-meteo.com/v1/forecast`
 
-## Patrón de fetch
+## Obtener ubicación del usuario
 
 ```jsx
-// Obtener ubicación del usuario
 navigator.geolocation.getCurrentPosition(
   (pos) => {
     const { latitude, longitude } = pos.coords
-    fetch(`${WEATHER_API}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`)
-      .then((res) => res.json())
-      .then((data) => {
-        setWeather(data)
-        setLoading(false)
-      })
-      .catch(() => {
-        setError('No se pudo obtener el clima')
-        setLoading(false)
-      })
+    // Hacer fetch con las coordenadas
   },
   () => {
     setError('Permite el acceso a tu ubicación para ver el clima')
@@ -34,20 +24,42 @@ navigator.geolocation.getCurrentPosition(
 )
 ```
 
-## Parámetros útiles de la API
+Siempre manejar el callback de error — el usuario puede denegar el permiso.
 
-- `current=` — datos actuales (temperature_2m, weather_code, wind_speed_10m)
-- `daily=` — pronóstico diario (temperature_2m_max, temperature_2m_min, weather_code)
-- `hourly=` — pronóstico por hora
-- `forecast_days=` — número de días de pronóstico (1-16)
-- `timezone=auto` — siempre incluirlo
+## Parámetros disponibles
 
-## Códigos de clima (WMO)
+### Datos actuales (`current=`)
+- `temperature_2m` — Temperatura en °C
+- `weather_code` — Código WMO (usar `getWeatherLabel()` para traducir)
+- `wind_speed_10m` — Velocidad del viento en km/h
+- `wind_direction_10m` — Dirección del viento en grados
+- `relative_humidity_2m` — Humedad relativa en %
 
-Usar la función `getWeatherLabel(code)` de `Weather.jsx` para mapear códigos WMO a labels en español con emojis. Si necesitas reutilizarla en otro componente, extraerla a un archivo utilitario compartido.
+### Datos por hora (`hourly=`)
+- `temperature_2m`, `weather_code`, `wind_speed_10m`, `wind_direction_10m`, `relative_humidity_2m`
+- Devuelve arrays con un valor por cada hora del día
 
-## Manejo de errores
+### Datos diarios (`daily=`)
+- `temperature_2m_max`, `temperature_2m_min` — Temperaturas extremas
+- `weather_code` — Código WMO del día
 
-- Siempre manejar el caso de que el usuario no permita geolocalización
-- Siempre manejar errores de red con `.catch()`
-- Mostrar mensajes de error en español al usuario
+### Otros parámetros
+- `timezone=auto` — **Siempre incluirlo**
+- `forecast_days=N` — Días de pronóstico (1-16)
+- `past_days=N` — Incluir N días anteriores en la respuesta
+
+## Estructura de la respuesta
+
+```json
+{
+  "current": { "temperature_2m": 22.5, "weather_code": 1 },
+  "hourly": { "time": ["2025-04-21T00:00", ...], "temperature_2m": [18.2, ...] },
+  "daily": { "time": ["2025-04-21", ...], "temperature_2m_max": [25.0, ...] }
+}
+```
+
+Los arrays de `hourly` y `daily` siempre van acompañados de un array `time` con las mismas posiciones.
+
+## Códigos WMO
+
+El proyecto usa `getWeatherLabel(code)` para mapear código numérico → label en español con emoji. Reutilizar esa función en vez de crear un mapeo nuevo.

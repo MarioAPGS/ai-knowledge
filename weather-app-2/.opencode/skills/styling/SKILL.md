@@ -1,20 +1,25 @@
 ---
 name: styling
-description: Convenciones de estilos CSS para la Weather App
+description: Paleta de colores, patrones CSS y convenciones visuales del proyecto
 ---
 
-## Reglas de estilos
+## Paleta de colores
 
-- Cada componente/página tiene su propio archivo `.css` en la misma carpeta
-- **No** usar CSS-in-JS (styled-components, emotion, etc.)
-- **No** usar inline styles
-- **No** usar frameworks CSS (Tailwind, Bootstrap, etc.)
-- CSS vanilla únicamente
+| Uso | Valor |
+|---|---|
+| Fondo de la app | `#f5f5f5` |
+| Fondo de cards | `white` |
+| Texto principal (body) | `#333` |
+| Títulos | `#222` |
+| Datos destacados (bold) | `#111` |
+| Texto secundario | `#888` |
+| Error | `#e74c3c` |
 
-## Patrón de estilos (basado en Weather.css)
+## Patrón de cards
+
+Todas las cards del proyecto siguen este estilo base:
 
 ```css
-/* Card principal - fondo blanco, bordes redondeados, sombra suave */
 .nombre-card {
   background: white;
   border-radius: 16px;
@@ -22,32 +27,23 @@ description: Convenciones de estilos CSS para la Weather App
   text-align: center;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
-
-/* Títulos */
-.nombre-card h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-/* Texto de error siempre en rojo */
-.error {
-  color: #e74c3c;
-}
 ```
 
-## Paleta de colores del proyecto
+## Tipografía
 
-- Fondo de la app: `#f5f5f5`
-- Cards: `white`
-- Texto principal: `#333`
-- Títulos: `#222`
-- Datos destacados: `#111` (bold)
-- Texto secundario: `#888`
-- Error: `#e74c3c`
+- Font stack: `system-ui, -apple-system, sans-serif` (definido en `index.css`)
+- Títulos `h1`: `font-size: 24px`, `color: #222`
+- Texto de error: `color: #e74c3c`
 
-## Variables globales (index.css)
+## Layout global (index.css)
 
-- Font: `system-ui, -apple-system, sans-serif`
-- Max width del contenedor: `480px`
-- Reset global con `* { margin: 0; padding: 0; box-sizing: border-box }`
+- Reset: `* { margin: 0; padding: 0; box-sizing: border-box }`
+- Contenedor centrado con `max-width: 480px`
+- Fondo: `#f5f5f5`, `min-height: 100vh`
+
+## Reglas
+
+- Un archivo `.css` por componente/página, en la misma carpeta
+- Nunca inline styles ni CSS-in-JS
+- Nunca frameworks CSS (Tailwind, Bootstrap, etc.)
+- Al crear una página nueva, mantener coherencia visual con las existentes — misma paleta, mismo estilo de cards, mismos espaciados

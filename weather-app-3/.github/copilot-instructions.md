@@ -15,52 +15,16 @@ Base URL de la API: `https://api.open-meteo.com/v1/forecast`
 ## Convenciones obligatorias
 
 1. **Solo functional components** con `export default function`
-2. **Estado con `useState`**, efectos con `useEffect`
-3. **No usar** state managers externos (Redux, Zustand, etc.)
-4. **Estilos en archivos `.css` separados** — nunca inline, nunca CSS-in-JS
-5. **Contenido visible al usuario en español**, código en inglés
-6. **Manejar siempre** los 3 estados: loading, error, datos listos
-7. **Seguir el patrón de `Weather.jsx`** para nuevos componentes
-
-## Patrón de componentes
-
-```jsx
-import { useState, useEffect } from 'react'
-import './Componente.css'
-
-const API_URL = 'https://api.open-meteo.com/v1/forecast'
-
-function helperFunction(param) { /* ... */ }
-
-export default function Componente() {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  useEffect(() => { /* fetch */ }, [])
-
-  if (loading) return <div className="card"><p>Cargando...</p></div>
-  if (error) return <div className="card"><p className="error">{error}</p></div>
-
-  return (
-    <div className="card">
-      {/* Contenido */}
-    </div>
-  )
-}
-```
-
-## Estilos
-
-- Cards: `background: white`, `border-radius: 16px`, `box-shadow: 0 2px 12px rgba(0,0,0,0.08)`
-- Fondo app: `#f5f5f5`
-- Texto: `#333` (body), `#222` (títulos), `#888` (secundario)
-- Error: `#e74c3c`
-- Font: `system-ui, -apple-system, sans-serif`
+2. **Estado con `useState`**, efectos con `useEffect` — sin state managers externos
+3. **Estilos en archivos `.css` separados** — nunca inline, nunca CSS-in-JS, nunca frameworks CSS
+4. **Contenido visible al usuario en español**, código en inglés
+5. **Manejar siempre** los 3 estados: loading, error, datos listos
+6. **Seguir el patrón de `Weather.jsx`** para nuevos componentes — mantener coherencia visual y estructural
+7. **Funciones utilitarias compartidas** van en `src/utils/` — reutilizar antes de duplicar
 
 ## API Open-Meteo
 
 - Usar `navigator.geolocation` para obtener coordenadas
-- Siempre incluir `timezone=auto`
+- Siempre incluir `timezone=auto` en las peticiones
 - Reutilizar `getWeatherLabel()` para mapear códigos WMO a labels en español
 - Manejar el caso de que el usuario no permita geolocalización
