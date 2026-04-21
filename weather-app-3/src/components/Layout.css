@@ -1,0 +1,48 @@
+.app-header {
+  background: var(--md-surface);
+  box-shadow: var(--md-elevation-2);
+  padding: 0 16px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header .logo {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--md-text);
+}
+
+.app-header nav {
+  display: flex;
+  gap: 4px;
+}
+
+.app-header nav a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: var(--md-text-muted);
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: var(--md-corner-full);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
+}
+
+.app-header nav a:hover {
+  background: rgba(103, 80, 164, 0.08);
+  color: var(--md-primary);
+}
+
+.app-header nav a.active {
+  background: rgba(103, 80, 164, 0.12);
+  color: var(--md-primary);
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0 12px;
+  }
+}
