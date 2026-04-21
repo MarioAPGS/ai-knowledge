@@ -1,0 +1,8 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]: Weather App
+    - navigation [ref=e6]:
+      - link "Clima" [ref=e7] [cursor=pointer]:
+        - /url: /
+  - main [ref=e8]:
+    - paragraph [ref=e10]: Cargando...

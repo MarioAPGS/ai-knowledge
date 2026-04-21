@@ -77,6 +77,19 @@ body {
 - `.app-main` usa `flex: 1` para llenar el espacio restante
 - El contenido dentro de `.app-main` puede usar un `max-width` interno si necesita centrar, pero el fondo/main ocupa todo el ancho
 
+### Centrado de contenido de página
+
+Cuando una página necesita centrar su contenido (cards, secciones, etc.), DEBE hacerlo con un contenedor interno dentro de `.app-main`, nunca restringiendo `.app-main` en sí:
+
+```css
+.nombre-page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+```
+
+Esto mantiene el fondo de `.app-main` a todo el ancho mientras el contenido queda centrado. Todas las secciones de la página (card principal, historial, etc.) deben estar dentro de este contenedor para que se alineen visualmente.
+
 ### Lo que NUNCA debe hacerse
 
 - NUNCA poner `max-width: 480px` en `#root` — el root siempre al 100%
